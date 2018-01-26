@@ -9,7 +9,7 @@ Post-condition: With the given values and commands given by user, it will
 				make modifications to the program. It will create a mock version of
 				an operating system.
 **********************************************************************************/
-#include <iostream>
+#include <iostream> //For input/output
 #include <fstream> //For the files that the disks want to read
 #include <vector> //To keep a vector of processes that are in the ready queue
 #include <string> //For commands
