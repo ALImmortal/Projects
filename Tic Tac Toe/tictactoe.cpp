@@ -1,12 +1,23 @@
-/*****************************************************************************
+/***********************************************************
 Project: Tic Tac Toe
-Objective: Play a game of Tic Tac Toe with the computer
-******************************************************************************/
+Objective: Play a game of Tic Tac Toe with computer
+Status: Complete
+************************************************************/
 #include <iostream>
 #include <array>
 #include <stdlib.h>
 
 using namespace std;
+//Functions
+int randOrow(int &o){
+  o = rand()%3;
+  return o;
+};
+
+int randOcol(int &o){
+  o = rand()%3;
+  return o;
+};
 
 //Main
 int main() {
@@ -29,8 +40,8 @@ int main() {
   //User can decide if they want to go against computer or another player
   cout << "So, what is your name? ";
   cin >> playerName;
-  cout << "Hey! "<<playerName<<"! Welcome to the game!"<<endl;
-  cout << "You will be X for this game."<<endl;
+  cout << "\nHey! "<<playerName<<"! Welcome to the game!"<<endl;
+  cout << "You will be X for this game.\n"<<endl;
   
   //Start the game
   for(int i=0; i<3; i++){
@@ -52,7 +63,7 @@ int main() {
 
   //Switch cases OR should I change to while loop?
   while(availGrid != 0 && (winX == false && winO == false)){
-    cout << "Okay, " << playerName <<"! Enter where to put your choice (rows 0-2 and column 0-2. Ex: 0 2)" << endl;
+    cout << "\nOkay, " << playerName <<"! Enter where to put your choice (rows 0-2 and column 0-2. Ex: 0 2)" << endl;
     cin >> a >> b;
     if(grid [a][b]=='?'){
       grid[a][b]=xX;
@@ -112,16 +123,24 @@ int main() {
     //Maybe want to delay O's output a bit, to make it look like O is thinking
     //O's turn (Computer) 
     //Print out O's move
-    int o1 = rand()%2;
-    int o2 = rand()%2;
+    int o1;
+    int o2;
+
     cout << endl;
     cout << "Now it's O's turn" <<endl;
     cout << "O is making it's turn ..." << endl;
 
     //O makes a move
-    if(grid [o1][o2]=='?'){
-      grid[o1][o2]=oO;
+    do{
+      randOrow(o1);
+      randOcol(o2);
+      if(grid[o1][o2]=='?'){
+        grid[o1][o2]='O';
+        break;
+      }
     }
+    while(grid[o1][o2]=='?');
+
     
     for(int i=0; i<3; i++){
       for (int j=0; j<3; j++){
